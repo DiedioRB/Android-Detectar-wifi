@@ -1,0 +1,36 @@
+public class MainActivity extends AppCompatActivity {
+    WifiManager wifi;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        wifi = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+
+        checarWifi();
+    }
+
+    public void checarWifi(){
+        if(!wifi.isWifiEnabled()){
+            //Aqui vai o código para quando não houver wi-fi
+						//Sugiro um Alert Dialog:
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            
+            builder.setCancelable(false);
+            builder.setTitle("Seu wifi está desativado!");
+            builder.setMessage("É necessário ativá-lo para o funcionamento do sistema!");
+            builder.setPositiveButton("Ativar", new DialogInterface.OnClickListener(){
+                public void onClick(DialogInterface dialog, int id){
+										wifi.setWifiEnabled(true);
+                }
+            })
+                    .setNegativeButton("Não Ativar", new DialogInterface.OnClickListener(){
+                        public void onClick(DialogInterface dialog, int id){
+                            Toast.makeText(this, "O sistema não funcionará corretamente sem internet!", Toast.LENGHT_SHORT).show();
+                        }
+                    });
+
+            builder.create().show();
+        }
+    }
