@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
             builder.setMessage("É necessário ativá-lo para o funcionamento do sistema!");
             builder.setPositiveButton("Ativar", new DialogInterface.OnClickListener(){
                 public void onClick(DialogInterface dialog, int id){
-										wifi.setWifiEnabled(true);
+			wifi.setWifiEnabled(true);
                 }
             })
                     .setNegativeButton("Não Ativar", new DialogInterface.OnClickListener(){
