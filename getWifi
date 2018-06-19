@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     public void checarWifi(){
         if(!wifi.isWifiEnabled()){
             //Aqui vai o código para quando não houver wi-fi
-						//Sugiro um Alert Dialog:
+	    //Sugiro um Alert Dialog:
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             
             builder.setCancelable(false);
